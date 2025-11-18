@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>This One is for you TAB :) </title>
+
+<style>
+  :root{
+    --bg1:#ffd6ec;
+    --bg2:#ffb7dd;
+    --card:white;
+    --accent:#ff7ac3;
+    --shadow:0 8px 24px rgba(255,82,166,0.25);
+  }
+
+  *{box-sizing:border-box;font-family:"Poppins",system-ui,Arial;}
+
+  body{
+    margin:0;min-height:100vh;padding:24px;
+    background:linear-gradient(180deg,var(--bg1),var(--bg2));
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;position:relative;
+  }
+
+  .glitter{
+    position:absolute;width:6px;height:6px;border-radius:50%;
+    background:white;opacity:0.8;filter:blur(1px);
+    animation: glitterMove 6s linear infinite;
+  }
+  @keyframes glitterMove{
+    from{transform:translateY(100vh) scale(0.5);}
+    to{transform:translateY(-10vh) scale(1.4);}
+  }
+
+  .heart{
+    position:absolute;
+    color:#ff3c93;
+    font-size:22px;
+    animation: floatHearts 7s infinite ease-in;
+    opacity:0.8;
+  }
+  @keyframes floatHearts{
+    from{transform:translateY(100vh) scale(1);}
+    to{transform:translateY(-20vh) scale(1.5);}
+  }
+
+  .flower{
+    position:absolute;width:100px;opacity:0.4;
+    animation: sway 10s infinite linear;
+  }
+  .f1{top:10%; left:5%; animation-duration:14s;}
+  .f2{top:70%; left:80%; animation-duration:17s;}
+  .f3{top:50%; left:-20px; animation-duration:12s;}
+
+  @keyframes sway{
+    0%{transform:translateY(0) rotate(0);}
+    50%{transform:translateY(-35px) rotate(10deg);}
+    100%{transform:translateY(0) rotate(0);}
+  }
+
+  .card{
+    width:100%;max-width:420px;background:var(--card);z-index:5;
+    border-radius:22px;padding:28px;text-align:center;
+    box-shadow:var(--shadow);
+  }
+
+  .kitty{
+    width:160px;height:auto;margin:0 auto 10px;
+  }
+
+  h1{margin:4px 0;color:#b3317a;font-size:24px;font-weight:700;}
+  .lead{color:#8a4f74;margin-bottom:14px;}
+
+  input{
+    width:100%;padding:12px;border-radius:12px;border:1px solid #ffc0e4;
+    text-align:center;font-size:16px;margin-bottom:14px;
+  }
+  button{
+    padding:12px;border:none;border-radius:12px;
+    background:var(--accent);color:white;font-weight:700;
+    width:100%;cursor:pointer;box-shadow:0 6px 14px rgba(255,78,160,0.28);
+  }
+
+  .hint{margin-top:10px;color:#b55a8f;font-size:13px;}
+
+  .overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,0.4);
+    display:none;align-items:center;justify-content:center;
+    z-index:20;padding:20px;
+  }
+  .popup{
+    background:white;border-radius:20px;padding:26px;
+    width:100%;max-width:460px;text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+  }
+
+  .bigmsg{
+    font-size:30px;color:#c42986;font-weight:800;margin-bottom:8px;
+  }
+
+  .close-btn{
+    margin-top:16px;background:#ff7ac3;color:white;
+    padding:12px 18px;border-radius:14px;font-weight:700;border:none;
+  }
+</style>
+</head>
+<body>
+
+<script>
+for(let i=0;i<30;i++){
+  let g=document.createElement("div");
+  g.className="glitter";
+  g.style.left=Math.random()*100+"%";
+  g.style.animationDelay=Math.random()*5+"s";
+  g.style.background=["#fff","#ffe1fa","#ffd0ef"][Math.floor(Math.random()*3)];
+  document.body.appendChild(g);
+}
+</script>
+
+<script>
+for(let i=0;i<15;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤";
+  h.style.left=Math.random()*100+"%";
+  h.style.animationDelay=Math.random()*6+"s";
+  document.body.appendChild(h);
+}
+</script>
+
+<img class="flower f1" src="https://i.postimg.cc/SRh3PcTC/flower1.png">
+<img class="flower f2" src="https://i.postimg.cc/SRh3PcTC/flower1.png">
+<img class="flower f3" src="https://i.postimg.cc/SRh3PcTC/flower1.png">
+
+<div class="card">
+  <img class="kitty" src="https://i.postimg.cc/MG6c1r5p/cute-kitty.png">
+
+  <h1> Surprise from ABD 👑</h1>
+  <p class="lead">Enter the secret code to open your magical message.</p>
+
+  <input id="codeInput" placeholder="Enter code here...">
+  <button id="unlockBtn">Unlock</button>
+
+  <div class="hint">Hint: Your FAV person Name 💗</div>
+</div>
+
+<div id="overlay" class="overlay">
+  <div class="popup">
+    <div class="bigmsg">Happy Princess Day 🎀👑</div>
+    <p>You deserve sparkles, magic & all beautiful things ✨💗</p>
+
+    <button class="close-btn" id="closeBtn">Close</button>
+  </div>
+</div>
+
+<audio id="music">
+  <source src="https://www2.cs.uic.edu/~i101/SoundFiles/BabyElephantWalk60.wav" type="audio/wav">
+</audio>
+
+<script>
+const SECRET = "abd";
+const input = document.getElementById("codeInput");
+const unlockBtn = document.getElementById("unlockBtn");
+const overlay = document.getElementById("overlay");
+const closeBtn = document.getElementById("closeBtn");
+const music = document.getElementById("music");
+
+function unlock(){
+  if(input.value.trim().toLowerCase() === SECRET){
+    overlay.style.display="flex";
+    music.play();
+  } else {
+    input.value="";
+    input.placeholder="Try again cutie...";
+    input.style.animation="shake 0.3s";
+    setTimeout(()=>input.style.animation="",300);
+  }
+}
+
+unlockBtn.addEventListener("click", unlock);
+input.addEventListener("keydown", e=>{ if(e.key==="Enter") unlock(); });
+closeBtn.addEventListener("click", ()=> overlay.style.display="none");
+</script>
+
+</body>
+</html>
